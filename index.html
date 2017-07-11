@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <script src="semantic/dist/semantic.min.js"></script>
+    <script type="text/javascript" src='src/notesList.js'></script>
+    <script type="text/javascript" src='src/note.js'></script>
+    <script type="text/javascript" src='src/index.js'></script>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+      $('.visible.example .ui.sidebar')
+        .sidebar({
+          context: '.visible.example .bottom.segment'
+        })
+        .sidebar('hide')
+    </script>
+
+    <div class="ui bottom attached segment pushable">
+      <div class="ui visible inverted left vertical sidebar menu">
+        <a class="item">
+          <i class="home icon"></i>
+          Home
+        </a>
+        <a class="item">
+          <i class="block layout icon"></i>
+          Create New Note
+        </a>
+        <a class="item">
+          <i class="calendar icon"></i>
+          All Your Notes
+          <ul id="all-notes">
+            <li>this is a test</li>
+            <li>this is a test</li>
+            <li>this is a test</li>
+          </ul>
+        </a>
+      </div>
+
+      <div class="pusher">
+        <div class="ui basic segment">
+          <h3 class="ui header">Your page</h3>
+            <div class="new-note">
+              <form id="create-note">
+                <input id="noteTitle"></input>
+                <input id="noteBody"></input>
+                <input type="submit" name="submit" value="Create"></button>
+              </form>
+            </div>
+            <div class="selected-note">
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+  </body>
+</html>
