@@ -1,15 +1,15 @@
-class notesList {
+class NotesList {
   constructor(data) {
       this.notes = []
   }
 
-  addNewNote(title, body) {
+  addNote(title, body) {
     const note = new Note(title, body)
     this.notes.push(note)
   }
 
   renderNotesList() {
-    return this.notes.map(note => note.renderNote())
+    return this.notes.map(note => note.renderShortNote())
   }
 
 }
