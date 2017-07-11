@@ -18,7 +18,6 @@ function successCallbackPost(event) {
 function createNote(notesList) {
   $('#create-note').on("submit", function(e) {
     e.preventDefault()
-    debugger
     let noteTitle = $('#noteTitle').val()
     let noteBody = $('#noteBody').val()
     adapter.postNote(noteTitle, noteBody, successCallbackPost)
@@ -28,7 +27,8 @@ function createNote(notesList) {
     notesList.addNote(noteTitle, noteBody)
     $('#noteTitle').val('')
     $('#noteBody').val('')
-    $('#notes-list').html(notesList.renderNotesList())}
+    $('#notes-list').html(notesList.renderNotesList())
+  }
 
     function successCallbackGet(data){
       // let notesList = new NotesList()

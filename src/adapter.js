@@ -12,6 +12,7 @@ class Adapter {
   postNote(title, noteBody, callback) {
     fetch("http://localhost:3000/api/v1/notes", {
       method: 'POST',
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         user_id: 1,
         title: title,
