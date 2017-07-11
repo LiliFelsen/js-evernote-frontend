@@ -30,7 +30,7 @@
           Home
         </a>
         <a class="item">
-          <i class="write icon"></i>
+          <i class="write icon" id="create-note"></i>
           Create New Note
         </a>
         <a class="item">
@@ -45,12 +45,15 @@
         <div class="ui basic segment">
           <h3 class="ui header">Your page</h3>
             <div class="new-note">
+
               <form id="create-note">
                 <input id="noteTitle"></input>
                 <input id="noteBody"></input>
-                <input type="submit" name="submit" value="Create"></input>
+                <input type="submit" id='submit-new-note' value="Create"></input>
+
               </form>
             </div>
+
             <div class="selected-note">
 
             </div>

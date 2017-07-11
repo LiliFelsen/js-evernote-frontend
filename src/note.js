@@ -1,5 +1,6 @@
 class Note {
   constructor(title, body) {
+    this.user = user1
     this.title = title
     this.body = body
   }
