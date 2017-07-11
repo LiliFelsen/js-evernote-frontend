@@ -12,7 +12,7 @@ class Adapter {
 
 
   postNote(title, noteBody, callback) {
-    fetch("/api/v1/notes", {
+    fetch("http://localhost:3000/api/v1/notes", {
       method: 'POST',
       body: JSON.stringify({
         user_id: 1,
@@ -20,7 +20,7 @@ class Adapter {
         body: noteBody
       })
     })
-    .then(response => reponse.json())
+    .then(response => console.log(response.json()))
     .then(callback)
     .catch(error => console.log(error))
   }

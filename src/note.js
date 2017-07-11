@@ -9,7 +9,7 @@ class Note {
     return(
       `<li class="note">
         <span class="note-title">${this.title}:</span><br>
-        <span class="note-body">${this.body.slice(0,30)}...</span>
+        <span class="note-body">${this.body}</span>
       </li>`
     )
   }
