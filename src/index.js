@@ -1,13 +1,23 @@
+const notesList = new NotesList()
+const adapter = new Adapter()
+
 $(document).ready(
   function(){
-  const notesList = new NotesList()
-  const adapter = new Adapter()
   createNote(notesList)
   adapter.getNotes(successCallbackGet)
 })
 
+
 const notesList = new NotesList()
 const adapter = new Adapter()
+
+// function successCallbackPost() {
+//   notesList.addNote(noteTitle, noteBody)
+//   $('#notes-list').html(notesList.renderNotesList())
+//   $('#noteTitle').val('')
+//   $('#noteBody').val('')
+// }
+
 
 function createNote(notesList) {
   $('#submit-new-note').on("submit", function(e) {
