@@ -17,9 +17,18 @@ class Note {
 
   renderNote() {
     return(
-      `<div>
-        <h3 class="note-title" data-id=${this.id}>${this.title}:</h3>
+      `<br><h3 class="ui header">Update or Delete one of your notes</h3>
+      <div class="ui raised segment">
+        <h3 class="note-title" data-id=${this.id}>${this.title}</h3>
         <p class="note-body" data-id=${this.id}>${this.body}</p>
+        <button class="ui icon button" id="edit-note" data-id=${this.id}>
+          <i class="edit icon"></i>
+          Edit
+        </button>
+        <button class="ui icon button" id="delete-note" data-id=${this.id}>
+          <i class="trash outline icon"></i>
+          Delete
+        </button>
       </div>`
     )
   }

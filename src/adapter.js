@@ -28,25 +28,16 @@ class Adapter {
     })
     .then(response => response.json())
     .then(callback)
-    .then()
+    .catch(error => console.log(error))
+  }
+
+  deleteNote(noteId, callback) {
+    fetch(`http://localhost:3000/api/v1/notes/${noteId}`, {
+      method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(callback)
     .catch(error => console.log(error))
   }
 
 }
-
-//
-// function postNotes(){
-//   $("#submit-new-note").click(function(){
-//       $.post("/api/v1/notes",
-//       {
-//         user_ID: 'user'
-//         title: 'title'
-//         body: 'body'
-//       }),
-//       .done(function(){
-//         alert( "Your note has been sent to the API")
-//       })
-//       .fail(function(){
-//         alert( "Post requested failed")
-//       })
-//   })
