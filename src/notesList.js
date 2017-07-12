@@ -12,4 +12,7 @@ class NotesList {
     return this.notes.map(note => note.renderShortNote())
   }
 
+  renderSelectedNote() {
+    return (this.notes[this.notes.length-1]).renderNote()
+  }
 }
