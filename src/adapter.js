@@ -5,7 +5,7 @@ class Adapter {
     fetch("http://localhost:3000/api/v1/notes")
     .then(response => response.json())
     .then(callback)
-    .catch(error=>console.log(error))
+    .catch(error => console.log(error))
   }
   // getNotes(callback){$.get("http://localhost:3000/api/v1/notes",callback)}
 
@@ -20,7 +20,7 @@ class Adapter {
       })
     })
     .then(response => response.json())
-    .then(callback)
+    .then(console.log("Post request done."))
     .catch(error => console.log(error))
   }
 

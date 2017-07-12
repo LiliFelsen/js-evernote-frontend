@@ -7,34 +7,29 @@ $(document).ready(
   adapter.getNotes(successCallbackGet)
 })
 
-function successCallbackPost(event) {
-  event.preventDefault()
-  notesList.addNote(noteTitle, noteBody)
-  $('#noteTitle').val('')
-  $('#noteBody').val('')
-  $('#notes-list').html(notesList.renderNotesList())
-}
+// function successCallbackPost() {
+//   notesList.addNote(noteTitle, noteBody)
+//   $('#notes-list').html(notesList.renderNotesList())
+//   $('#noteTitle').val('')
+//   $('#noteBody').val('')
+// }
 
 function createNote(notesList) {
   $('#create-note').on("submit", function(e) {
     e.preventDefault()
     let noteTitle = $('#noteTitle').val()
     let noteBody = $('#noteBody').val()
-    adapter.postNote(noteTitle, noteBody, successCallbackPost)
-  })}
-
-  function successCallbackPost() {
     notesList.addNote(noteTitle, noteBody)
+    adapter.postNote(noteTitle, noteBody)
+    $('#notes-list').html(notesList.renderNotesList())
+    $('#one-note').html(notesList.renderSelectedNote())
     $('#noteTitle').val('')
     $('#noteBody').val('')
+  })}
+
+  function successCallbackGet(data){
+    data.forEach(noteItem => {
+      notesList.addNote(noteItem.title,noteItem.body)
+    })
     $('#notes-list').html(notesList.renderNotesList())
   }
-
-    function successCallbackGet(data){
-      // let notesList = new NotesList()
-      data.forEach(noteItem => {
-        notesList.addNote(noteItem.title,noteItem.body)
-      })
-      $( "#notes-list" ).html(notesList.renderNotesList());
-      // alert( "Load was performed." );
-    }
