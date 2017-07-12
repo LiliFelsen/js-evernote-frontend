@@ -20,9 +20,8 @@ const adapter = new Adapter()
 
 
 function createNote(notesList) {
-  $('#submit-new-note').on("submit", function(e) {
+  $('#create-note').on("submit", function(e) {
     e.preventDefault()
-    let adapter = new Adapter()
     let noteTitle = $('#create-note #noteTitle').val()
     let noteBody = $('#create-note #noteBody').val()
     debugger
