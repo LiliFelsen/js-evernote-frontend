@@ -1,35 +1,43 @@
-const notesList = new NotesList()
 const adapter = new Adapter()
 
 $(document).ready(
   function(){
-  createNote(notesList)
+  createNote()
   adapter.getNotes(successCallbackGet)
+  showSelectedNote()
 })
 
-// function successCallbackPost() {
-//   notesList.addNote(noteTitle, noteBody)
-//   $('#notes-list').html(notesList.renderNotesList())
-//   $('#noteTitle').val('')
-//   $('#noteBody').val('')
-// }
+function successCallbackPost() {
+  adapter.getNotes(successCallbackGet)
+}
 
-function createNote(notesList) {
-  $('#create-note').on("submit", function(e) {
-    e.preventDefault()
+function createNote() {
+  $('#create-note').on("submit", function(event) {
+    event.preventDefault()
     let noteTitle = $('#noteTitle').val()
     let noteBody = $('#noteBody').val()
-    notesList.addNote(noteTitle, noteBody)
-    adapter.postNote(noteTitle, noteBody)
-    $('#notes-list').html(notesList.renderNotesList())
-    $('#one-note').html(notesList.renderSelectedNote())
+    adapter.postNote(noteTitle, noteBody,successCallbackPost)
     $('#noteTitle').val('')
     $('#noteBody').val('')
+    // $('#selected-note').html(notesList.renderSelectedNote())
   })}
 
   function successCallbackGet(data){
+    const notesList = new NotesList()
     data.forEach(noteItem => {
-      notesList.addNote(noteItem.title,noteItem.body)
+      notesList.addNote(noteItem.title, noteItem.body, noteItem.id)
     })
     $('#notes-list').html(notesList.renderNotesList())
+  }
+
+  function callbackShowSelectedNote(data) {
+    console.log(data)
+  }
+
+  function showSelectedNote() {
+    $('#notes-list').on("click", "#listed-note", function(event) {
+      event.preventDefault()
+      let noteId = $(event.target).data().id
+      adapter.getOneNote(noteId, callbackShowNote)
+    })
   }

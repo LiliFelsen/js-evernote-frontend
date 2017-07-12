@@ -1,5 +1,6 @@
 class Adapter {
-  constructor(){}
+  constructor(){
+  }
 
   getNotes(callback){
     fetch("http://localhost:3000/api/v1/notes")
@@ -7,9 +8,15 @@ class Adapter {
     .then(callback)
     .catch(error => console.log(error))
   }
-  // getNotes(callback){$.get("http://localhost:3000/api/v1/notes",callback)}
 
-  postNote(title, noteBody, callback) {
+  getOneNote(noteId, callback){
+    fetch(`http://localhost:3000/api/v1/notes/${noteId}`)
+    .then(response => response.json())
+    .then(callback)
+    .catch(error => console.log(error))
+  }
+
+  postNote(title, noteBody,callback) {
     fetch("http://localhost:3000/api/v1/notes", {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -20,7 +27,8 @@ class Adapter {
       })
     })
     .then(response => response.json())
-    .then(console.log("Post request done."))
+    .then(callback)
+    .then()
     .catch(error => console.log(error))
   }
 

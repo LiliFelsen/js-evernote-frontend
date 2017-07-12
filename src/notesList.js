@@ -3,16 +3,16 @@ class NotesList {
       this.notes = []
   }
 
-  addNote(title, body) {
-    const note = new Note(title, body)
-    this.notes.push(note)
+  addNote(title, body, id) {
+    const note = new Note(title, body, id)
+    this.notes.unshift(note)
   }
 
   renderNotesList() {
     return this.notes.map(note => note.renderShortNote())
   }
 
-  renderSelectedNote() {
-    return (this.notes[this.notes.length-1]).renderNote()
-  }
+  // renderSelectedNote() {
+  //   return (this.notes[0]).renderNote()
+  // }
 }
