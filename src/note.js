@@ -7,18 +7,18 @@ class Note {
 
   renderShortNote() {
     return(
-      `<a class="item" id="listed-note">
-      <li class="note">
-        <span class="note-title" data-id=${this.id}>${this.title}:</span><br>
-        <span class="note-body" data-id=${this.id}>${this.body.slice(0,30)}...</span>
-      </li></a>`
+      `<li class="note">
+        <a class="item" id="listed-note" data-id=${this.id}>
+         ${this.title}:<br>
+         ${this.body.slice(0,30)}...
+        </a>
+      </li>`
     )
   }
 
   renderNote() {
     return(
-      `<br><h3 class="ui header">Update or Delete one of your notes</h3>
-      <div class="ui raised segment">
+      `<div class="ui raised segment">
         <h3 class="note-title" data-id=${this.id}>${this.title}</h3>
         <p class="note-body" data-id=${this.id}>${this.body}</p>
         <button class="ui icon button" id="edit-note" data-id=${this.id}>
@@ -29,6 +29,26 @@ class Note {
           <i class="trash outline icon"></i>
           Delete
         </button>
+      </div>`
+    )
+  }
+
+  renderEditForm() {
+    return(
+      `<h3 class="ui header">Update your note</h3>
+      <div class="ui raised segment">
+        <form id="update-note-form" class="ui form">
+          <input type="hidden" id="updatedNoteId" value="${this.id}">
+          <div class="field">
+            <label>Title</label>
+            <input id="updatedNoteTitle" value="${this.title}">
+          </div>
+          <div class="field">
+            <label>Body</label>
+            <textarea id="updatedNoteBody">${this.body}</textarea>
+          </div>
+          <button id="update-note-button" class="ui button" type="submit">Update</button>
+        </form>
       </div>`
     )
   }
