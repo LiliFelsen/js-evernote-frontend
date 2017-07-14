@@ -10,7 +10,7 @@ class Note {
       `<li class="note">
         <a class="item" id="listed-note" data-id=${this.id}>
          ${this.title}:<br>
-         ${this.body.slice(0,30)}...
+         ${this.body.slice(0,20)}...
         </a>
       </li>`
     )

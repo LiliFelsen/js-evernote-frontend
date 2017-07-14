@@ -2,8 +2,8 @@ const adapter = new Adapter()
 
 $(document).ready(
   function(){
-  createNote()
   adapter.getNotes(successCallbackGet)
+  createNote()
   showSelectedNote()
   deleteNote()
   showCreateForm()
@@ -13,6 +13,9 @@ $(document).ready(
 
 function successCallbackPost() {
   adapter.getNotes(successCallbackGet)
+  // debugger
+  let id = $('#listed-note').first().data().id + 1
+  adapter.getOneNote(id, callbackShowSelectedNote)
 }
 
 function createNote() {
@@ -23,7 +26,7 @@ function createNote() {
     adapter.postNote(noteTitle, noteBody,successCallbackPost)
     $('#noteTitle').val('')
     $('#noteBody').val('')
-    $('#create-note-div').toggle()
+    $('#create-note-div').toggle(false)
     // $('#selected-note').html(notesList.renderSelectedNote())
   })}
 
@@ -47,6 +50,8 @@ function createNote() {
     $('#notes-list').on("click", "#listed-note", function(event) {
       event.preventDefault()
       $('#create-note-div').toggle(false)
+      $('#update-note-div').toggle(false)
+      $('#selected-note').toggle(true)
       let noteId = $(event.target).data().id
       adapter.getOneNote(noteId, callbackShowSelectedNote)
     })
@@ -69,7 +74,9 @@ function createNote() {
   function showCreateForm() {
     $('#create-note-link').on("click", function(event) {
       event.preventDefault()
-      $('#create-note-div').toggle()
+      $('#create-note-div').toggle(true)
+      $('#selected-note').toggle(false)
+      $('#update-note-div').toggle(false)
     })
   }
 
@@ -79,8 +86,8 @@ function createNote() {
     let newNoteBody = data.body
     let newNote = new Note(data.title, data.body, data.id)
     $('#update-note-div').html(newNote.renderEditForm())
-    $('#update-note-div').toggle()
-    $('#selected-note').toggle()
+    $('#update-note-div').toggle(true)
+    $('#selected-note').toggle(false)
   }
 
   function showEditForm() {
@@ -98,7 +105,7 @@ function createNote() {
     let id = data.id
     let updatedNote = new Note(title, body, id)
     $('#selected-note').toggle(true)
-    $('#update-note-div').toggle()
+    $('#update-note-div').toggle(false)
     $('#selected-note').html(updatedNote.renderNote())
     adapter.getNotes(successCallbackGet)
   }
@@ -109,7 +116,6 @@ function createNote() {
       let updatedNoteTitle = $('#updatedNoteTitle').val()
       let updatedNoteBody = $('#updatedNoteBody').val()
       let idOfUpdatedNote = $('#updatedNoteId').val()
-      // debugger
       adapter.updateNote(idOfUpdatedNote, updatedNoteTitle, updatedNoteBody, updateNoteCallback)
     })
 
